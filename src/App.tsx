@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
@@ -7,9 +7,22 @@ import { Todo } from "./components/model";
 import { MdHomeFilled } from "react-icons/md";
 
 const App: React.FC = () => {
+  const storedValue = localStorage.getItem('todos');
+  const valueLocalStorage = storedValue ? JSON.parse(storedValue) : null;
   const [todo, setTodo] = useState<string>("");
-  const [todos, setTodos] = useState<Array<Todo>>([]);
+  const [todos, setTodos] = useState<Array<Todo>>(
+    valueLocalStorage !== null ? (
+      valueLocalStorage
+    )
+    : (
+      []
+    )
+  )
   const [CompletedTodos, setCompletedTodos] = useState<Array<Todo>>([]);
+
+  useEffect( () => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos])
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
