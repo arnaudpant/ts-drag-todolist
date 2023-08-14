@@ -4,6 +4,7 @@ import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { Todo } from "./components/model";
+import { MdHomeFilled } from "react-icons/md";
 
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
@@ -59,7 +60,12 @@ const App: React.FC = () => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="container">
-        <h1 className="heading">Todo List</h1>
+        <header>
+          <a href="https://kallavero.fr">
+            <MdHomeFilled />
+          </a>
+          <h1 className="heading">Todo List</h1>
+        </header>
         <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
         <TodoList
           todos={todos}
