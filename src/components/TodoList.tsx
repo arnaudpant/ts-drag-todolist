@@ -25,7 +25,7 @@ const TodoList: React.FC<props> = ({
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
-                        <span className="todos-list__title">Active Tasks</span>
+                        <span className="todos-list__title">En cours</span>
                         {todos?.map((todo, index) => (
                             <SingleTodo
                                 index={index}
@@ -47,7 +47,7 @@ const TodoList: React.FC<props> = ({
                         className={`todos-list  ${snapshot.isDraggingOver ? "dragcomplete" : "remove"
                             }`}
                     >
-                        <span className="todos-list__title">Completed Tasks</span>
+                        <span className="todos-list__title">Archivage</span>
                         {CompletedTodos?.map((todo, index) => (
                             <SingleTodo
                                 index={index}
